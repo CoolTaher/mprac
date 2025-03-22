@@ -1,0 +1,26 @@
+```python
+def insertion_sort(unsorted_list):
+    for i in range(1, len(unsorted_list)):
+        j = i
+        insert_value = unsorted_list[i]
+        print(f"Step {i}: Trying to place {insert_value}")  # Step description
+        while j > 0 and unsorted_list[j - 1] > insert_value:
+            unsorted_list[j] = unsorted_list[j - 1]
+            j -= 1
+            print(f"  Moved {unsorted_list[j]} to position {j + 1}")
+        unsorted_list[j] = insert_value
+        print(f"  Placed {insert_value} at position {j}")
+        print(f"  Current list: {unsorted_list}")
+
+# Accept input from the user
+try:
+    user_input = input("Enter numbers separated by spaces: ")
+    # Convert input string to a list of integers
+    my_list = list(map(int, user_input.split()))
+
+    print("Original list:", my_list)
+    # Sort the list
+    insertion_sort(my_list)
+    print("Sorted list:", my_list)
+except ValueError:
+    print("Please enter a valid sequence of integers separated by spaces.")
