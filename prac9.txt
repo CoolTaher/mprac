@@ -1,0 +1,78 @@
+-----------------------------------------------------------------------Practical 8 ----------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+xxxxxxxxxx[Q1.html]xxxxxxxxxx
+
+<?php
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  
+  $conn = new mysqli($servername, $username, $password);
+  if($conn -> connect_error){
+     die("Connection Error.".$conn->connect_error);
+  }
+  $sql = "CREATE DATABASE db";
+  if($conn -> query($sql) === True){
+     echo "Database created successfully";
+  }else{
+     echo "Error" .$conn -> error;
+  }
+  $conn -> close();
+?>
+
+
+xxxxxxxxxx[Q2.html]xxxxxxxxxx
+
+<?php
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $database = "db";
+
+  $conn = new mysqli($servername, $username, $password, $database);
+
+  if($conn -> connect_error){
+     die("Connection Error").$conn->error;
+  }
+  $sql = "INSERT INTO STD(f_name, l_name, age)values('prathamesh', 'Shinde', 20)";
+  if($conn -> $query === True){
+     if($conn -> query($sql) === True){
+      if(mysqli_affected_rows($conn) > 0){
+         echo "Record inserted";
+      }else{
+         echo "Not inserted record";
+      }
+     }
+  }
+  $conn -> close();
+?>
+
+
+xxxxxxxxxx[Q3.html]xxxxxxxxxx
+
+<?php
+   $servername = "localhost";
+   $username = "root";
+   $password = "";
+   $database = "db";
+
+   $conn = new mysqli($servername, $username, $password, $database);
+   
+   if($conn -> connect_error){
+      die("Conneciton failed").$conn -> error;
+   }
+   $sql = "select * from STD";
+   $result = $conn -> query($sql);
+   if($result){
+      while($row = $result -> fetch_assoc()){
+         echo "First name : " .$row["f_name"] ."Last name : ".$row["l_name"] ."Age : ".$row["age"];
+      }
+   }else{
+      echo "No record found";
+   }
+   $conn -> close();
+?>
+
+
+

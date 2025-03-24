@@ -1,0 +1,123 @@
+-----------------------------------------------------------------------Practical 7 ----------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+xxxxxxxxxx[Q1.html]xxxxxxxxxx
+
+//Factorial
+
+<?php
+function factorial($number)
+{
+    $factorial = 1;
+    for ($i = 1; $i <= $number; $i++) {
+        $factorial = $factorial * $i;
+    }
+    return $factorial;
+}
+
+
+$number = 10;
+$fact = factorial($number);
+echo "Factorial of $number is: $fact";
+?>
+
+
+
+xxxxxxxxxx[Q2.html]xxxxxxxxxx
+
+//Fibonacci Series
+
+<?php
+function fibonacciSeries($n)
+{
+    $num1 = 0;
+    $num2 = 1;
+
+    for ($i = 0; $i < $n; $i++) {
+        echo $num1 . ",";
+        $num3 = $num1 + $num2;
+        $num1 = $num2;
+        $num2 = $num3;
+    }
+}
+
+$n = 10;
+fibonacciSeries($n);
+?>
+
+
+xxxxxxxxxx[Q3.html]xxxxxxxxxx
+
+<?php
+function isPrime($num) {
+    if ($num < 2) return false;
+    for ($i = 2; $i < $num; $i++) {
+        if ($num % $i == 0) return false;
+    }
+    return true;
+}
+
+$start = 10;
+$end = 50;
+echo "Prime numbers between $start & $end: ";
+for ($i = $start; $i <= $end; $i++) {
+    if (isPrime($i)) {
+        echo $i . " ";
+    }
+}
+?>
+
+
+xxxxxxxxxx[Q4.html]xxxxxxxxxx
+
+//Reverse
+
+<?php
+$num=12345;
+$reverse=0;
+while($num>0){
+$reverse = $reverse*10+($num%10);
+$num=(int)($num/10);
+}
+echo "Reversed number:".$reverse;
+?>
+
+
+xxxxxxxxxx[Q5.html]xxxxxxxxxx
+
+//String functions
+
+<?php
+$text = "Hello, World!";
+echo 'Length of the string: '.strlen($text)."</br>";
+echo "Uppercase: ".strtoupper($text)."</br>"; 
+echo "Lowercase: ".strtolower($text)."</br>";
+echo "Capitalized 1st letter: ".ucfirst($text)."</br>";
+echo "Substring (from index 7, length 5): ".substr($text, 7, 5)."</br>";
+echo "Position of 'World': ".strpos($text, "World")."</br>";
+echo "Replace 'World' with 'PHP': ".str_replace("World", "PHP", $text)."</br>"; 
+
+$trimmedText = " Hello, PHP! ";
+echo "Trimmed String: ".trim($trimmedText)."</br>";
+
+$words = explode(",", $text);
+echo "Exploded string: ";
+print_r($words);
+
+echo "</br>Imploded string: ".implode(" ", $words)."</br>";
+?>
+
+xxxxxxxxxx[Q6.html]xxxxxxxxxx
+
+//Math functions
+<?php
+$number = -5;
+echo "Absolute value of $number:".abs($number)."\n";
+echo "Minimum:".(min(2,3))."</br>";
+echo "Maximum:".(max(2,3))."</br>";
+echo "Floor:".(floor(10.5))."</br>";
+echo "Power:".(pow(4,2))."</br>";
+echo "Cell:".(ceil(9.2))."</br>";
+echo "Round:".(round(10.5))."</br>";
+echo "Square root:".(sqrt(9))."</br>";
+echo "Random root:".(rand(2,3))."</br>";

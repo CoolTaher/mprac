@@ -1,0 +1,158 @@
+-----------------------------------------------------------------------Practical 3 ----------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+xxxxxxxxxx[Q1.html]xxxxxxxxxx
+
+<html>
+    <head>
+        <title>Identify card</title>
+    </head>
+    <body width="60px" height="80px">
+        <h1 >Id card details</h1>
+        <div style="background-color: blue;">
+            <div style="background-color: cyan; width: 50px; height: 50px;">
+                <h1>Mulund college of commerce</h1>
+                <h5>S.N. Road, Mulund West, Mumbai 400080 Tel : 256009</h5>
+                <h4 style="background-color: green; text-align: center;">SFC 1-CARD 2024-25</h4>
+            </div>
+            <center>
+                <img src="image.png" width="30px" height="40px" alt="image">
+            </center><br><br><br>
+            <div style="background-color: blue; width: 30px; height: 50px;">
+                <b>Name : <font color="red">Bob</b><br><br><br>
+                <br>Class : SYBSCS
+                <br>Pin : 400708
+                <br>Roll No : 248360
+                <br>Div : A
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <br>
+                <br>DOB : 8112004
+                <br>Ph no : xxxxx
+                <br>Address : 
+                <br>
+            </div>
+        </div>
+    </body>
+</html>
+
+xxxxxxxxxx[Q2.html]xxxxxxxxxx
+
+<html>
+    <head><title>List</title></head>
+    <body>
+        <b>Mobile Operating System</b>
+        <ol type="1">
+            <li>Android</li>
+            <li>BlackBerry</li>
+            <li>Iphone</li>
+            <li>Window phone</li>
+        </ol>
+        <br>
+        <b>Mobile Manufactures</b>
+        <ol type="A">
+            <li>Samgung</li>
+            <li>MTC</li>
+            <li>MicroMax</li>
+            <li>Apple</li>
+        </ol>
+    </body>
+</html>
+
+xxxxxxxxxx[Q3.html]xxxxxxxxxx
+
+ <html>
+    <head>
+        <title>States and their Capital</title>
+    </head>
+    <body>
+        <b>States and Capital</b>
+        <ol type="1">
+            <li>
+                Delhi
+                <ul><li>New Delhi</li></ul>
+            </li>
+            <li>
+                Maharashtra
+                <ul><li>Mumbai</li></ul>
+            </li>
+            <li>
+                Gujrat
+                <ul><li>Ahemdabad</li></ul>
+            </li>
+            <li>
+                Rajyastan
+                <ul><li>Jaipur</li></ul>
+            </li>
+            <li>
+                Madhya Pradesh
+                <ul><li>Bhopal</li></ul>
+            </li>
+        </ol>
+    </body>
+ </html>
+
+xxxxxxxxxx[Q4.html]xxxxxxxxxx
+
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <h1>Insert on image</h1>
+        <h2>Welcome to my website</h2>
+        <p>Here is an image</p>
+        <img src="C:\Users\Admin\Desktop\Coding\py/triangle.png" 
+                    alt="triangle" height="300px" width="300px">
+    </body>
+</html>
+
+xxxxxxxxxx[Q5.html]xxxxxxxxxx
+
+<html>
+    <head></head>
+    <body>
+        <img src="SG.png" 
+                    alt="Check the Error" height="1000px" width="1000px" usemap="#mymap">
+        <map name="mymap">
+            <area shape="rect" coords="27,153,101,229" title="Ractangle" href="https://google.com">
+            <area shape="circle" coords="231,66,37" title="Circle" href="https://yahoo.com">
+            <area shape="rect" coords="163,171,298,229" title="Ractangle" href="https://twitter.com">
+            <area shape="poly" coords="65,39,28,103,102,103" title="triangle" href="https://facebook.com">
+        </map>
+        
+    </body>
+</html>
+
+xxxxxxxxxx[Table.html]xxxxxxxxxx
+
+<html>
+    <head>
+        <title>Table Creation</title>
+    </head>
+    <body>
+        <table border="2" >
+            <tr>
+                <th>Col1</th>
+                <th>Col2</th>
+                <th>Col3</th>
+            </tr>
+                
+            <tr>
+                <td rowspan="2">R1 C1</td>
+                <td>R1 C2</td>
+                <td>R1 C3</td>  
+            </tr>
+
+            <tr>
+                <td>R2 C4</td>
+                <td>R2 C2</td>
+            </tr>
+
+            <tr>
+                <td>R3 C1</td>
+                <!-- <td>R3 Col2</td> -->
+            </tr>
+        </table>
+    </body>
+</html>
