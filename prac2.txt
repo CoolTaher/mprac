@@ -1,0 +1,263 @@
+
+-----------------------------------------------------------------------Practical 2 ----------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q1.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+#find determinat of 2X2 matrix
+import numpy as np
+'''M = np.array([[1,2],[3,4]])
+dt=np.linalg.det(M)
+print("Matrix")
+print(M)
+print("Determinant : ",dt)'''
+
+#User input
+M = []
+print("Enter elements for a 2x2 matrix:")
+
+for i in range(2):
+    row = []
+    for j in range(2):
+        element = int(input(f"Enter element for row {i+1}, column {j+1}: "))
+        row.append(element)
+    M.append(row)
+
+matrix = np.array(M)
+
+determinant = np.linalg.det(matrix)
+
+print("\nMatrix:")
+print(matrix)
+print("\nDeterminant:", round(determinant, 2))
+
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q2.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+#determinant of 3x3 matrix
+import numpy as np
+'''M = np.array([[3,5,2],[6,3,4],[3,7,2]])
+dt=np.linalg.det(M)
+print("Matrix")
+print(M)
+print("Determinant:",dt)'''
+
+#user input
+M=[]
+print("Enter elements for 3x3 matrix:")
+
+for i in range(3):
+    row=[]
+    for j in range(3):
+        element=int(input("Enter elements: "))
+        row.append(element)
+    M.append(row)
+
+matrix=np.array(M)
+
+dt=np.linalg.det(matrix)
+print("\nMatrix:")
+print(matrix)
+print("\nDeterminants:", dt)
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q3.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+#for rxr matrix
+import numpy as np
+M=[]
+r=int(input("Enter no.rows:"))
+c=int(input("enter no. of cols:"))
+for i in range(r):
+    a=[]
+    for j in range(c):
+        e=int(input("Enter element:"))
+        a.append(e)
+    M.append(a)
+print(M)
+M1=np.array(M)
+dt=np.linalg.det(M1)
+print("\nMatrix")
+print(M1)
+print("Determinnt:",dt)
+ 
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q4.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+#accept 2x2 matrix and find determiant of A+2B
+import numpy as np
+
+print("Enter element of Matrix A:")
+A=np.array([[float(input("a11:")),float(input("a12:"))],[float(input("a21:")),float(input("a22:"))]])
+
+print("Enter element of Matrix B:")
+B=np.array([[float(input("a11:")),float(input("a12:"))],[float(input("a21:")),float(input("a22:"))]])
+
+r_mat=A+2*B
+dt=np.linalg.det(r_mat)
+print("Matrix A:")
+print(A)
+print("Matrix B:")
+print(B)
+print("Matrix A+2B:")
+print(r_mat)
+print("Determinant of A+2B:", dt)
+
+
+'''#prdefined matrix
+A=np.array([[3,2],[1,4]])
+B=np.array([[4,3],[0,2]])
+r_mat=A+2*B
+dt=np.linalg.det(r_mat)
+print("Matrix A:")
+print(A)
+print("Matrix B:")
+print(B)
+print("Matrix A+2B:")
+print(r_mat)
+print("Determinant of A+2B:", dt)'''
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q5.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+#accept 2x2 matrix and find determiant of A+B+C
+import numpy as np
+
+print("Enter element of Matrix A:")
+A=np.array([[float(input("a11:")),float(input("a12:"))],[float(input("a21:")),float(input("a22:"))]])
+
+print("Enter element of Matrix B:")
+B=np.array([[float(input("a11:")),float(input("a12:"))],[float(input("a21:")),float(input("a22:"))]])
+
+print("Enter element of Matrix C:")
+C=np.array([[float(input("a11:")),float(input("a12:"))],[float(input("a21:")),float(input("a22:"))]])
+
+r_mat=A+B+C
+dt=np.linalg.det(r_mat)
+print("Matrix A:")
+print(A)
+print("Matrix B:")
+print(B)
+print("Matrix C:")
+print(C)
+print("Matrix A+B+C:")
+print(r_mat)
+print("Determinant of A+B+C:", dt)
+
+'''#prdefined matrix
+A=np.array([[3,2],[1,4]])
+B=np.array([[4,3],[0,2]])
+C=np.array([[6,4],[8,9]])
+r_mat=A+B+C
+dt=np.linalg.det(r_mat)
+print("Matrix A:")
+print(A)
+print("Matrix B:")
+print(B)
+print("Matrix C:")
+print(C)
+print("Matrix A+B+C:")
+print(r_mat)
+print("Determinant of A+B+C:", dt)'''
+
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q6.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+#check if (2x2)matrix's inverse exists or not
+import numpy as np
+
+print("Enter element of Matrix A:")
+A=np.array([[float(input("a11:")),float(input("a12:"))],[float(input("a21:")),float(input("a22:"))]])
+print(A)
+M1=np.array(A)
+dt=np.linalg.det(M1)
+print("Matrix :",M1)
+print("Determinant:",dt)
+if dt == 0:
+    print("Inverse dosen't exists")
+else:
+    print("Inverse exists")
+    inverse=np.linalg.inv(M1)
+    print("Inverse of the matrix:")
+    print(inverse)
+    
+
+'''#Predefined matrix
+A=np.array([[3,2],[1,4]])
+dt=np.linalg.det(A)
+print("Matrix A:")
+print(A)
+print("Determinant of A:", dt)
+if dt == 0:
+    print("Inverse dosen't exists")
+else:
+    print("Inverse exists")
+    inverse=np.linalg.inv(A)
+    print("Inverse of the matrix:")
+    print(inverse)'''
+
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q7.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+#check if (3x3)matrix's inverse exists or not
+import numpy as np
+
+print("Enter element of Matrix A:")
+A=np.array([[float(input("a11:")),float(input("a12:")),float(input("a13:"))],[float(input("a21:")),float(input("a22:")),float(input("a23:"))],[float(input("a31:")),float(input("a32:")),float(input("a33:"))]])
+print(A)
+M1=np.array(A)
+dt=np.linalg.det(M1)
+print("Matrix :",M1)
+print("Determinant:",dt)
+if dt == 0:
+    print("Inverse dosen't exists")
+else:
+    print("Inverse exists")
+    
+
+'''#Predefined matrix
+A=np.array([[3,2,7],[1,4,6],[3,6,8]])
+dt=np.linalg.det(A)
+print("Matrix A:")
+print(A)
+print("Determinant of A:", dt)
+if dt == 0:
+    print("Inverse dosen't exists")
+else:
+    print("Inverse exists")'''
+
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q8.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+#for rxr matrix and check if it is invertible or not
+import numpy as np
+M=[]
+r=int(input("Enter no.rows:"))
+c=int(input("enter no. of cols:"))
+for i in range(r):
+    a=[]
+    for j in range(c):
+        e=int(input("Enter element:"))
+        a.append(e)
+    M.append(a)
+print(M)
+M1=np.array(M)
+dt=np.linalg.det(M1)
+print("\nMatrix")
+print(M1)
+print("Determinnt:",dt)
+if dt == 0:
+    print("Inverse dosen't exists")
+else:
+    print("Inverse is exists..")
+    inverse=np.linalg.inv(M1)
+    print("Inverse of the matrix:")
+    print(inverse)
+
+       
+        

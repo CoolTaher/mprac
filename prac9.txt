@@ -1,0 +1,120 @@
+
+-----------------------------------------------------------------------Practical 9 ----------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q1.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+'''#Accept square matrix from user and check if it's derogatory or not[Q1]
+from sympy import Symbol, eye, det, Matrix, S, roots
+
+def input_mat(square=False, dtype=float):  #for user input
+    if square:
+        r=c=int(input("Enter the dimension of square matrix:"))
+    else:
+        r=int(input("Enter the no.of rows:"))
+        c=int(input("Enter the no.of cols:"))
+
+    ret_mat=[]
+    for i in range(r):
+        ret_row=[dtype(input(f"Enter elements for position [{i+1},{j+1}]:"))for j in range(c)]
+        ret_mat.append(ret_row)
+    return ret_mat
+
+def get_A_LI(mat,var='lambda'):
+    r,c=mat.shape
+    L=Symbol(var)
+    I=eye(r)
+
+    return mat - L*I
+
+def charac_poly(mat,var='lambda'):
+    A_LI = get_A_LI(mat,var=var)
+
+    return det(A_LI).as_poly().monic()
+
+def eig_vals(mat):
+    charac = charac_poly(mat)
+    return roots(charac)
+
+def eig_vec(mat):
+    A_LI = get_A_LI(mat)
+    charac = det(A_LI)
+    vals = roots(charac)
+    vecs = [A_LI.subs('lambda',val).nullspace() for val in vals]
+    return vals, vecs
+
+def is_derogatory(mat):
+    vals, vecs = eig_vec(mat)
+    for val,eigenvec_list in zip(vals.keys(),vecs):
+        alg_mult = vals[val]
+        geo_mult = len(eigenvec_list)
+        if alg_mult > geo_mult:
+            return True
+    return False
+    
+A=Matrix(input_mat(square=True,dtype=S))
+#A=Matrix([[1,0,2],[2,1,0],[0,0,4]])#for predefined matrix
+print("Matrix A:",A)
+print("Eigenvalues of a with their algebric multiplicity:",eig_vals(A))
+print("Is the matrix derogatory?:",is_derogatory(A))'''
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q2.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+#Q2
+#Accept square matrix and check if it is positive or negative definite
+from sympy import Symbol, eye, det,Matrix,S,roots
+
+def input_mat(square=False, dtype=float):
+    if square:
+        r=c=int(input('Enter the dimension of the square matrix:'))
+    else:
+        r=int(input('Enter the number of rows:'))
+        c=int(input('Enter thenumber of columns:'))
+
+    ret_mat= []
+    for i in range(r):
+        ret_row=[dtype(input(f'Enter element for position [{i+1},{j+1}]:')) for j in range(c)]
+        ret_mat.append(ret_row)
+
+    return ret_mat
+
+def get_A_LI(mat,var='lamba'):
+    r,c=mat.shape
+    L=Symbol(var)
+    I=eye(r)
+
+    return mat - L*I
+
+def charac_poly(mat,var='lamda'):
+    A_LI=get_A_LI(mat, var=var)
+
+    return det(A_LI).as_poly().monic()
+
+def eig_vals(mat):
+    charac=charac_poly(mat)
+    return roots(charac)
+
+def is_positive_definite(mat):
+    if mat!=mat.T:
+        return False
+
+    vals=eig_vals(mat)
+    return all(val>0 for val in vals)
+
+def is_negative_definite(mat):
+    if mat!=mat.T:
+        return False
+
+    vals=eig_vals(mat)
+    return all(val<0 for val in vals)
+
+A=Matrix(input_mat(square=True,dtype=S))
+#A=Matrix([[2,1,0],[0,3,2],[1,4,3]]) #For predefined matrix
+print('MatrixA:',A)
+print('Charachteristic polynomial of A:', charac_poly(A))
+print('Eigenvalues of A with their algebraic multiplicity:',eig_vals(A))
+print('Is A positive definite ?:',is_positive_definite(A))
+print('Is A negative definite ?:',is_negative_definite(A))
+
+

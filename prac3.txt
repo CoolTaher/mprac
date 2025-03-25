@@ -1,0 +1,323 @@
+
+-----------------------------------------------------------------------Practical 3----------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q1.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+'''#Addition of 2 vectors(user input)[Q1]
+def input_vec(dtype=float):
+    dim=int(input("Enter dimension of vectors:"))
+    return[dtype(input(f"Enter elements {i+1}:"))for i in range(dim)]
+
+def add_vec(v1,v2):
+    return [(elem1+elem2)for elem1,elem2 in zip(v1,v2,strict=True)]
+
+u=input_vec()
+v=input_vec()
+print("Vector u:",u)
+print("Vector v:",v)
+print("u+v:", add_vec(u,v))
+#for predined vectors
+def add_vec(v1,v2):
+    return [(elem1+elem2)for elem1,elem2 in zip(v1,v2,strict=True)]
+u = [1, 2, 3]
+v = [4, 5, 6]
+print("Vector u:",u)
+print("Vector v:",v)
+print("u+v:", add_vec(u,v))'''
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q2.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+'''#Addition of 3 vectors(user input)[Q2]
+def input_vec(dtype=float):
+    dim=int(input("Enter dimension of vectors:"))
+    return[dtype(input(f"Enter elements {i+1}:"))for i in range(dim)]
+
+def add_vec(v1,v2,v3):
+    return [(elem1+elem2+elem3)for elem1,elem2,elem3 in zip(v1,v2,v3,strict=True)]
+
+
+u=input_vec()
+v=input_vec()
+w=input_vec()
+print("Vector u:",u)
+print("Vector v:",v)
+print("Vector w:",w)
+print("u+v+w:", add_vec(u,v,w))
+#for predined vector
+def add_vec(v1,v2,v3):
+    return [(elem1+elem2+elem3)for elem1,elem2,elem3 in zip(v1,v2,v3,strict=True)]
+
+u = [1, 2, 3]
+v = [4, 5, 6]
+w = [7, 8, 9]
+print("Vector u:",u)
+print("Vector v:",v)
+print("Vector w:",w)
+print("u+v+w:", add_vec(u,v,w))'''
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q3.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+'''#subtraction of 2 vectors(user input)[Q3]
+def input_vec(dtype=float):
+    dim=int(input("Enter dimension of vectors:"))
+    return[dtype(input(f"Enter elements {i+1}:"))for i in range(dim)]
+
+def sub_vec(v1,v2):
+    return [(elem1 - elem2)for elem1,elem2 in zip(v1,v2,strict=True)]
+
+u=input_vec()
+v=input_vec()
+print("Vector u:",u)
+print("Vector v:",v)
+print("u-v:", sub_vec(u,v))'
+#for predined vectors
+def sub_vec(v1,v2):
+    return [(elem1-elem2)for elem1,elem2 in zip(v1,v2,strict=True)]
+u = [1, 2, 3]
+v = [4, 5, 6]
+print("Vector u:",u)
+print("Vector v:",v)
+print("u-v:", sub_vec(u,v))'''
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q4.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+'''#Accept vector v from user and scalar and find s*v[Q4]
+def input_vec(dtype=float):
+    dim=int(input("Enter dimension of vectors:"))
+    return[dtype(input(f"Enter elements {i+1}:"))for i in range(dim)]
+u=input_vec()
+print("Vector u:",u)
+s=int(input("Enter scalar value:"))
+print("Maultiplying scalar with vector")
+print("The result is:",[s*x for x in u])
+#for predefined
+u = [1, 2, 3]
+print("Vector u:",u)
+s=3
+print("Maultiplying scalar with vector")
+print("The result is:",[s*x for x in u])'''
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q5.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+'''#Accept vector and multiply their sum by 3[Q5]
+def input_vec(dtype=float):
+    dim=int(input("Enter dimension of vectors:"))
+    return[dtype(input(f"Enter elements {i+1}:"))for i in range(dim)]
+
+def add_vec(v1,v2,v3):
+    return [(elem1+elem2+elem3)*3 for elem1,elem2,elem3 in zip(v1,v2,v3,strict=True)]
+
+
+u=input_vec()
+v=input_vec()
+w=input_vec()
+print("Vector u:",u)
+print("Vector v:",v)
+print("Vector w:",w)
+print("(u+v+w)*3:", add_vec(u,v,w))
+#for predined vector
+def add_vec(v1,v2,v3):
+    return [(elem1+elem2+elem3)*3 for elem1,elem2,elem3 in zip(v1,v2,v3,strict=True)]
+
+u = [1, 2, 3]
+v = [4, 5, 6]
+w = [7, 8, 9]
+print("Vector u:",u)
+print("Vector v:",v)
+print("Vector w:",w)
+print("3*(u+v+w):", add_vec(u,v,w))'''
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q6.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+'''#Accept 2 vectors X,Y and find 2*X+3*Y[Q6]
+def input_vec(dtype=float):
+    dim=int(input("Enter dimension of vectors:"))
+    return[dtype(input(f"Enter elements {i+1}:"))for i in range(dim)]
+
+def add_vec(v1,v2):
+    return [(2*e1 + 3*e2)for e1,e2 in zip(v1,v2,strict=True)]
+
+X=input_vec()
+Y=input_vec()
+print("Vector X:",X)
+print("Vector Y:",Y)
+print("2X+3Y:", add_vec(X,Y))
+#for predined vectors
+def add_vec(v1,v2):
+    return [(2*e1 + 3*e2)for e1,e2 in zip(v1,v2,strict=True)]
+X = [1, 2, 3]
+Y = [4, 5, 6]
+print("Vector X:",X)
+print("Vector Y:",Y)
+print("2X+3Y:", add_vec(X,Y))'''
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q7.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+'''#Accept 3 vectors and find 2*X-3*Y+Z[Q7]
+def input_vec(dtype=float):
+    dim=int(input("Enter dimension of vectors:"))
+    return[dtype(input(f"Enter elements {i+1}:"))for i in range(dim)]
+
+def add_vec(v1,v2,v3):
+    return [(2*e1 - 3*e2 + e3) for e1,e2,e3 in zip(v1,v2,v3,strict=True)]
+
+
+X=input_vec()
+Y=input_vec()
+Z=input_vec()
+print("Vector X:",X)
+print("Vector Y:",Y)
+print("Vector Z:",Z)
+print("(2*X-3*Y+Z):", add_vec(X,Y,Z))
+#for predined vector
+def add_vec(v1,v2,v3):
+    return [(2*e1 - 3*e2 + e3) for e1,e2,e3 in zip(v1,v2,v3,strict=True)]
+
+X = [1, 2, 3]
+Y = [4, 5, 6]
+Z = [7, 8, 9]
+print("Vector X:",X)
+print("Vector Y:",Y)
+print("Vector Z:",Z)
+print("(2*X-3*Y+Z):", add_vec(X,Y,Z))'''
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q8.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+'''#Accept 2 vectors X,Y and find 2*X-3*Y[Q8]
+def input_vec(dtype=float):
+    dim=int(input("Enter dimension of vectors:"))
+    return[dtype(input(f"Enter elements {i+1}:"))for i in range(dim)]
+
+def sub_vec(v1,v2):
+    return [(2*e1 - 3*e2)for e1,e2 in zip(v1,v2,strict=True)]
+
+X=input_vec()
+Y=input_vec()
+print("Vector X:",X)
+print("Vector Y:",Y)
+print("2X-3Y:", sub_vec(X,Y))
+#for predined vectors
+def sub_vec(v1,v2):
+    return [(2*e1 - 3*e2)for e1,e2 in zip(v1,v2,strict=True)]
+X = [1, 2, 3]
+Y = [4, 5, 6]
+print("Vector X:",X)
+print("Vector Y:",Y)
+print("2X-3Y:", sub_vec(X,Y))'''
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q9.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+'''#Dot product of 2 vectors(user input)[Q9]
+def input_vec(dtype=float):
+    dim=int(input("Enter dimension of vectors:"))
+    return[dtype(input(f"Enter elements {i+1}:"))for i in range(dim)]
+
+def dot_product(v1,v2):
+    return sum((e1*e2) for e1,e2 in zip(v1,v2,strict=True))
+
+u=input_vec()
+v=input_vec()
+print("Vector u:",u)
+print("Vector v:",v)
+print(f"The dot product of 2 vectors is:", dot_product(u,v))
+#for predined vectors
+def dot_product(v1,v2):
+    return sum(e1+e2 for e1,e2 in zip(v1,v2,strict=True))
+u = [1, 2, 3]
+v = [4, 5, 6]
+print("Vector u:",u)
+print("Vector v:",v)
+print(f"The dot product of 2 vectors is:", dot_product(u,v))'''
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q10.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+'''#Dot product of 2 vectors(user input) and find 2U+3V[Q10]
+def input_vec(dtype=float):
+    dim=int(input("Enter dimension of vectors:"))
+    return[dtype(input(f"Enter elements {i+1}:"))for i in range(dim)]
+
+def dot_product(v1,v2):
+    return sum((2*e1)*(3*e2) for e1,e2 in zip(v1,v2,strict=True))
+
+u=input_vec()
+v=input_vec()
+print("Vector u:",u)
+print("Vector v:",v)
+print(f"The dot product of 2u+3v:", dot_product(u,v))
+#for predined vectors
+def dot_product(v1,v2):
+    return sum((2*e1)*(3*e2) for e1,e2 in zip(v1,v2,strict=True))
+u = [1, 2, 3]
+v = [4, 5, 6]
+print("Vector u:",u)
+print("Vector v:",v)
+print(f"The dot product of 2u+3v:", dot_product(u,v))'''
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q11.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+'''#Menu driven to accept vectos and perfom operation(add,sub,dot product)[Q11]
+def input_vec(dtype=float):
+    dim=int(input("Enter dimension of vectors:"))
+    return[dtype(input(f"Enter elements {i+1}:"))for i in range(dim)]
+def add_vec(v1,v2):
+    return [(e1+e2)for e1,e2 in zip(v1,v2,strict=True)]
+def sub_vec(v1,v2):
+    return [(e1-e2)for e1,e2 in zip(v1,v2,strict=True)]
+def dot_product(v1,v2):
+    return sum((e1*e2) for e1,e2 in zip(v1,v2,strict=True))
+
+def main():
+    u=input_vec()
+    v=input_vec()
+    print("Vector u:",u)
+    print("Vector v:",v)
+    while True:
+        print("\n choose an operation")
+        print("1.Add vector")
+        print("2.sub vector")
+        print("3.Dot vector")
+        print("4.Exit")
+        choice = input("Enter your choice:")
+        if choice=="1":
+            print("u+v:",add_vec(u,v))
+        elif choice == "2":
+            print("u-v:",sub_vec(u,v))
+        elif choice =="3":
+            print("U.v:",dot_product(u,v))
+        elif choice =="4":
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice")
+
+if __name__ == "__main__":
+    main()'''
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx[Q12.html]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+#Generator liner combination[Q12]
+def input_vec(dtype=float):
+    dim=int(input("Enter dimension of vector:"))
+    return[dtype(input(f"Enter element {i+1}:"))for i in range(dim)]
+
+def linear_comb(v1,v2,c1,c2):
+    return[c1*e1+c2*e2 for e1,e2 in zip(v1,v2,strict=True)]
+
+u=input_vec()
+v=input_vec()
+if len(u) != len(v):
+    print("Error! vector must be have the same dimension")
+else:
+    c1=float(input("Enter the scalar coefficient for 1st vec(c1):"))
+    c2=float(input("Enter the scalar coefficient for 2st vec(c2):"))
+    result=linear_comb(u,v,c1,c2)
+    print("Vector u:",u)
+    print("Vector v:",v)
+    print(f"Linear combination({c1}*u+{c2}*v):",result)
