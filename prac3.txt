@@ -1,0 +1,52 @@
+
+-----------------------------------------------------------------------Practical 3 ----------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX///1st code///
+
+<html> 
+<head> 
+<title>Page 1</title> 
+</head> 
+<body> 
+<form action="page2.html"> 
+User Name:<input id="uname"></br> 
+Password:<input id="pass"></br> 
+<input id="b1" type="submit" value="submit" /> 
+</form> 
+</body> 
+</html> 
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX////2nd code///
+
+<html> 
+<head> 
+<title>Page 2</title> 
+</head> 
+<body> 
+This is Page 2. 
+</body> 
+</html> 
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX///8B//
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+public class SeleniumDemo {
+public static void main(String args[])
+{
+	int a=10,b=20;
+	System.out.println("Hi....");
+	System.out.println(a+b);
+	System.out.println("Selenium demo...");
+	WebDriver driver = new FirefoxDriver();
+	driver.get("https://www.google.com/");
+	driver.manage().window().maximize();
+	driver.quit();
+}
+}
+
+
+
