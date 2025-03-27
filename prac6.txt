@@ -1,0 +1,45 @@
+-----------------------------------------------------------------------Practical 6 ----------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX[Pr6\binarysearch.py]XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+def binarysearch(theValues,target):
+    low = 0
+    high = len(theValues)-1
+    while low <= high:
+        mid = (high+low) // 2
+        if theValues[mid] == target:
+            print("Number is found at poition ",mid + 1)
+            break 
+        elif target<theValues[mid]:
+            high = mid - 1
+        else:
+            low = mid + 1
+    else:
+        print("Number is not available in the list.")
+
+theValues = list(map(int,input("Enter the sorted list of numbers separated by spaces:").split()))
+target = int(input("Enter the number to be searched:"))
+binarysearch(theValues,target)                          
+
+
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX[Pr6\linearsearch.py]XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+def linearSearch(list,key):
+    for i in range(len(list)):
+        if key == list[i]:
+            print("Element is Found")
+            print(i+1,"is the position of the element",lst[i])
+            found = True
+            break
+    if not found:
+            print("Element is not Found")
+
+lst = list(map(int,input("Enter the list of the numbers Separated by spaces:").split()))
+key = int(input("Enter the key element:"))
+
+linearSearch(lst,key)
+
+

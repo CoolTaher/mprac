@@ -1,0 +1,223 @@
+-----------------------------------------------------------------------Practical 1 ----------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX[Pr1\DSA_Pr1_Q1.txt]XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+#A. Demonstrate the use of various Python Data Types ans Structure 
+#String Example
+print("String Example")
+print()
+
+#Create a String using Double quotes
+string1 = "Python Programming"
+print(string1)
+
+#Create a String using Single quotes
+string2 = 'Python Programming'
+print(string2)
+
+#Create a String using your Name
+name = "abc"
+print("Name : ", name)
+
+print()
+print("="*28)
+
+#Integer Example
+print("Integer Examples")
+print()
+
+#int() with a interger value
+print("int(123) is : ", int(123))
+
+#int() with a floating point value
+print("int(123.23) is : ", int(123.23))
+
+#int() with a numeric-string value
+print("int('123') is : ", int("123"))
+
+print()
+print("="*28)
+print()
+
+#List Example
+print("List Examples")
+print()
+
+#List with elements of different data types
+list1 = [1, "Hello", 3.4]
+print("List1 is : ", list1)
+
+#List with duplicate elements
+list2 = [1, "Hello", 3.4, "Hello", 1]
+print("List2 is : ", list2)
+
+#Empty list
+list3 = []
+print("List3 is : ", list3)
+
+print()
+print("="*28)
+print()
+
+#Tuple Examples
+print("Tuple Examples")
+print()
+
+#Different types of tuples #Empty tuple
+my_tuple1 = ()
+print("Tuple1 is : ", my_tuple1)
+
+#Tuple having integers
+my_tuple2 = (1,2,3)
+print("Tuple2 is : ", my_tuple2)
+
+#Tuple with mixed datatypes
+my_tuple3 = (1,"Hello", 3.4)
+print("tuple3 is : ",my_tuple3)
+
+#nested tuple
+my_tuple4 = ("mouse", [8,4,6], (1,2,3))
+print("Tuple4 is : ", my_tuple4)
+
+print()
+print("="*28)
+print()
+
+#SET Examples
+print("Set  Examples")
+print()
+
+#Create a set of String data type
+student_id = {112,114,116,118,115}
+print("Student ID : ",student_id)
+
+#Create a set of Sting datatype
+vowel_letters = {'a','e','i','o','u'}
+print("Vowel letters : ", vowel_letters)
+
+#Create a set of mixed data types
+mixed_set = {"Hello", 101, -2, 'Bye'}
+print("Set of mixed data type is : ", mixed_set)
+
+print()
+print("="*28)
+print()
+
+#Dicstionary
+print("Dicstionary Examples ")
+
+personal_details = {"Name":"Prathamesh", "age":29, "City":"Thane"}
+print("Personal details : ", personal_details)
+
+#Creating a dictionary
+country_capitals = {
+    "India":"Delhi",
+    "United States":"Washington D.C",
+    "Italy":"Rome",
+    "England":"Londan"
+    }
+
+#Printing the Dictionary
+print("country capitals is : ", country_capitals)
+
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX[Pr1\DSA_Pr1_Q2.txt]XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+#B. Demonstratetion of OOP Concept  in python
+#1. Examples 1. Use of class and objects
+#Parent class
+class Animal:
+    def __intit__(self, name):
+        self.name = name
+
+    def eat(self):
+        print(self.name, "is eating")
+
+#Create class inhereting from animal
+class Dog(Animal):
+    def bark(self):
+        print("Woof!")
+
+#Create objects
+animal = Animal("Generic Animal")
+Animal.eat()
+
+dog = Dog("Tommy")
+dog.eat()
+dog.bark()
+
+#Example 2 : Use of inheritance in Python
+#base class
+class Animal:
+    def eat(self):
+        print("I can eat!")
+
+    def sleep(self):
+        print("I can Sleep")
+
+#Derived Class
+class Dog(Animal):
+    def bark(self):
+        print("I can bark! woof woof!")
+
+#Create objects of the Dog class
+dog1 = Dog()
+#Calling members of the base Class
+dog1.eat()
+dog1.sleep()
+#Calling members of derived class
+dog1.bark()
+
+#Example 3 : Python Encapsulation
+class Computer:
+    def __init__(self):
+        self.__maxprice = 900
+
+    def sell(self):
+        print("Selling price : {} ".format(self.__maxprice))
+    def setMaxPrice(self, price):
+        self.__maxprice = price
+
+c = Computer()
+c.sell()
+
+#Change the Price
+c.__maxprice = 1000
+c.sell()
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX[Pr1\Pr1BQ1.py]XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+class Animal:
+    def __init__(self,name):
+        self.name = name
+    def eat(self):
+        print(self.name,"is eating.")
+class dog(Animal):
+    def bark(self):
+        print("Woof!")
+animal = Animal("Generic arrival")
+animal.eat()
+
+d=dog("Tommy")
+d.eat()
+d.bark()
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX[Pr1\Pr1BQ2.py]XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+class Animal:   
+    def eat(self):
+        print("I can eating")
+    def sleep(self):
+        print("I can sleep")
+class dog(Animal):
+    def bark(self):
+        print("I can bark! woof woof!")
+
+d = dog()
+d.bark()
+d.sleep()
+d.eat()
