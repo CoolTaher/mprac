@@ -1,0 +1,244 @@
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxPractical No. 9A 
+ 
+ 
+Aim: Demonstrate proficiency in using ListView and GridView widgets, both in 
+their normal and builder versions, for efficient data display.   
+ 
+ 
+main.dart 
+ 
+import 'package:flutter/material.dart'; 
+ 
+void main() { 
+  runApp(MyApp()); 
+} 
+ 
+class MyApp extends StatelessWidget { 
+  @override 
+  Widget build(BuildContext context) { 
+    return MaterialApp( 
+      debugShowCheckedModeBanner: false, 
+      home: HomeScreen(), 
+    ); 
+  } 
+} 
+ 
+class HomeScreen extends StatelessWidget { 
+  final List<String> items = List.generate(10, (index) => 'Item ${index + 1}'); 
+ 
+  @override 
+  Widget build(BuildContext context) { 
+    return Scaffold( 
+      appBar: AppBar(title: Text("ListView & GridView Example")), 
+      body: Column( 
+        children: [ 
+          // Normal ListView 
+          Expanded( 
+            child: ListView( 
+              children: items.map((item) => ListTile(title: Text(item))).toList(), 
+            ), 
+          ), 
+ 
+          Divider(), 
+ 
+          // ListView.builder 
+          Expanded( 
+            child: ListView.builder( 
+              itemCount: items.length, 
+              itemBuilder: (context, index) { 
+                return ListTile(title: Text(items[index])); 
+              }, 
+            ), 
+          ), 
+ 
+          Divider(), 
+ 
+          // Normal GridView 
+          Expanded( 
+            child: GridView.count( 
+              crossAxisCount: 2, 
+              children: List.generate( 
+                6, 
+                    (index) => Container( 
+                  margin: EdgeInsets.all(8), 
+                  color: Colors.blue, 
+                  child: Center(child: Text('Box ${index + 1}', style: TextStyle(color: 
+Colors.white))), 
+                ), 
+              ), 
+            ), 
+          ), 
+ 
+          Divider(), 
+ 
+          // GridView.builder 
+          Expanded( 
+            child: GridView.builder( 
+              gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2), 
+              itemCount: 6, 
+              itemBuilder: (context, index) { 
+                return Container( 
+                  margin: EdgeInsets.all(8), 
+                  color: Colors.green, 
+                  child: Center(child: Text('Box ${index + 1}', style: TextStyle(color: 
+Colors.white))), 
+                ); 
+              }, 
+            ), 
+          ), 
+        ], 
+      ), 
+    ); 
+  } 
+} 
+  
+Output: 
+ 
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxPractical No. 9B 
+ 
+ 
+Aim: Implement navigation and routing using methods such as push, pop, and 
+pushReplacement for seamless user interaction. 
+ 
+ 
+main.dart 
+ 
+import 'package:flutter/material.dart'; 
+ 
+void main() { 
+  runApp(MyApp()); 
+} 
+ 
+class MyApp extends StatelessWidget { 
+  @override 
+  Widget build(BuildContext context) { 
+    return MaterialApp( 
+      debugShowCheckedModeBanner: false, 
+      title: 'Navigation Example', 
+      home: DashboardScreen(), 
+    ); 
+  } 
+} 
+ 
+// Dashboard Screen (Home) 
+class DashboardScreen extends StatelessWidget { 
+  @override 
+  Widget build(BuildContext context) { 
+    return Scaffold( 
+      appBar: AppBar(title: Text("Dashboard")), 
+      body: Center( 
+        child: Column( 
+          mainAxisAlignment: MainAxisAlignment.center, 
+          children: [ 
+            ElevatedButton( 
+              onPressed: () { 
+                // Navigate to the Settings Screen 
+                Navigator.push( 
+                  context, 
+                  MaterialPageRoute(builder: (context) => SettingsScreen()), 
+                ); 
+              }, 
+              child: Text("Go to Settings"), 
+            ), 
+            SizedBox(height: 20), 
+            ElevatedButton( 
+              onPressed: () { 
+                // Navigate to the About Screen 
+                Navigator.push( 
+                  context, 
+                  MaterialPageRoute(builder: (context) => AboutScreen()), 
+                ); 
+              }, 
+              child: Text("Go to About"), 
+            ), 
+          ], 
+        ), 
+      ), 
+    ); 
+  } 
+} 
+ 
+// Settings Screen 
+class SettingsScreen extends StatelessWidget { 
+  @override 
+  Widget build(BuildContext context) { 
+    return Scaffold( 
+      appBar: AppBar(title: Text("Settings")), 
+      body: Center( 
+        child: Column( 
+          mainAxisAlignment: MainAxisAlignment.center, 
+          children: [ 
+            ElevatedButton( 
+              onPressed: () { 
+                // Replace Settings Screen with Profile Screen 
+                Navigator.pushReplacement( 
+                  context, 
+                  MaterialPageRoute(builder: (context) => ProfileScreen()), 
+                ); 
+              }, 
+              child: Text("Go to Profile (Replace)"), 
+            ), 
+            SizedBox(height: 20), 
+            ElevatedButton( 
+              onPressed: () { 
+                // Go back to Dashboard 
+                Navigator.pop(context); 
+              }, 
+              child: Text("Back to Dashboard"), 
+            ), 
+          ], 
+        ), 
+      ), 
+    ); 
+  } 
+} 
+ 
+// About Screen 
+class AboutScreen extends StatelessWidget { 
+  @override 
+  Widget build(BuildContext context) { 
+    return Scaffold( 
+      appBar: AppBar(title: Text("About")), 
+      body: Center( 
+        child: ElevatedButton( 
+          onPressed: () { 
+            // Go back to Dashboard 
+            Navigator.pop(context); 
+          }, 
+          child: Text("Back to Dashboard"), 
+        ), 
+      ), 
+    ); 
+  } 
+} 
+ 
+// Profile Screen 
+class ProfileScreen extends StatelessWidget { 
+  @override 
+  Widget build(BuildContext context) { 
+    return Scaffold( 
+      appBar: AppBar(title: Text("Profile")), 
+      body: Center( 
+        child: ElevatedButton( 
+          onPressed: () { 
+            // Go back to Settings Screen 
+            Navigator.pop(context); 
+          }, 
+          child: Text("Back to Settings"), 
+        ), 
+      ), 
+    ); 
+  } 
+} 
+  
+Output: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
