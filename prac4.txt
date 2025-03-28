@@ -1,0 +1,311 @@
+xxxxxxxxxxxxxxxxPractical No. 4A 
+ 
+ 
+Aim: Implement the concept of RecyclerView for efficient display of large 
+datasets. 
+ 
+ 
+activity_main.xml 
+ 
+<?xml version="1.0" encoding="utf-8"?> 
+<androidx.constraintlayout.widget.ConstraintLayout 
+xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:app="http://schemas.android.com/apk/res-auto" 
+    xmlns:tools="http://schemas.android.com/tools" 
+    android:id="@+id/main" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent" 
+    tools:context=".MainActivity"> 
+ 
+    <androidx.recyclerview.widget.RecyclerView 
+        android:id="@+id/rv" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        tools:listitem="@layout/rv_item" 
+        android:padding="10dp" 
+        android:layout_margin="20dp" 
+        app:layout_constraintRight_toRightOf="parent" 
+        app:layout_constraintLeft_toLeftOf="parent" 
+        app:layout_constraintTop_toTopOf="parent" 
+        app:layout_constraintBottom_toBottomOf="parent"/> 
+ 
+</androidx.constraintlayout.widget.ConstraintLayout> 
+ 
+ 
+Make new layout (ex:- rv_item.xml) 
+ 
+<?xml version="1.0" encoding="utf-8"?> 
+<androidx.cardview.widget.CardView 
+xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:app="http://schemas.android.com/apk/res-auto" 
+    xmlns:tools="http://schemas.android.com/tools" 
+    android:layout_width="match_parent" 
+    android:layout_margin="10dp" 
+    app:cardCornerRadius="20dp" 
+    android:layout_height="wrap_content"> 
+ 
+    <androidx.constraintlayout.widget.ConstraintLayout 
+        android:layout_width="match_parent" 
+        android:layout_height="match_parent"> 
+ 
+        <TextView 
+            android:id="@+id/symbol" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:text="Symbol" 
+            android:textSize="25dp" 
+            app:layout_constraintEnd_toStartOf="@+id/price" 
+            app:layout_constraintHorizontal_bias="0.8" 
+            app:layout_constraintStart_toStartOf="parent" 
+            app:layout_constraintTop_toTopOf="parent" /> 
+ 
+        <TextView 
+            android:id="@+id/price" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:text="price" 
+            android:textSize="20dp" 
+            app:layout_constraintBottom_toBottomOf="@+id/symbol" 
+            app:layout_constraintEnd_toEndOf="parent" 
+            app:layout_constraintHorizontal_bias="0.5" 
+            app:layout_constraintStart_toEndOf="@+id/symbol" 
+            app:layout_constraintTop_toTopOf="@+id/symbol" /> 
+ 
+        <TextView 
+            android:id="@+id/name" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:text="name" 
+            android:textSize="23dp" 
+            app:layout_constraintEnd_toEndOf="@+id/symbol" 
+            app:layout_constraintStart_toStartOf="@+id/symbol" 
+            app:layout_constraintTop_toBottomOf="@+id/symbol" /> 
+    </androidx.constraintlayout.widget.ConstraintLayout> 
+ 
+</androidx.cardview.widget.CardView> 
+ 
+ 
+Create Data Class File (Ex:- DataModel.kt) 
+package com.example.recycleview 
+ 
+data class DataModel( 
+    val name : String, 
+    val symbol : String, 
+    val price : String 
+) 
+ 
+ 
+Create Kotlin Class File (RvAdapter.kt) 
+ 
+package com.example.cryptoapp 
+ 
+import android.view.LayoutInflater 
+import android.view.View 
+import android.view.ViewGroup 
+import android.widget.TextView 
+import androidx.recyclerview.widget.RecyclerView 
+import com.example.recycleview.DataModel 
+import com.example.recycleview.R 
+ 
+class RvAdapter(private val arrayList: 
+ArrayList<DataModel>):RecyclerView.Adapter<RvAdapter.ViewHolder>() { 
+ 
+    inner class ViewHolder(view:View):RecyclerView.ViewHolder(view){ 
+ 
+        val name = view.findViewById<TextView>(R.id.name) 
+        val symbol = view.findViewById<TextView>(R.id.symbol) 
+        val price = view.findViewById<TextView>(R.id.price) 
+    } 
+ 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): 
+ViewHolder { 
+        val view = 
+LayoutInflater.from(parent.context).inflate(R.layout.rv_item,parent,false) 
+        return ViewHolder(view) 
+    } 
+ 
+    override fun getItemCount(): Int { 
+        return arrayList.size 
+    } 
+ 
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) { 
+        holder.name.text = arrayList[position].name 
+        holder.symbol.text = arrayList[position].symbol 
+        holder.price.text = arrayList[position].price 
+    } 
+} 
+ 
+ 
+ 
+ 
+MainActivity.kt 
+ 
+package com.example.recycleview 
+ 
+import android.os.Bundle 
+import androidx.appcompat.app.AppCompatActivity 
+import androidx.core.view.ViewCompat 
+import androidx.recyclerview.widget.LinearLayoutManager 
+import androidx.recyclerview.widget.RecyclerView 
+import com.example.cryptoapp.RvAdapter 
+ 
+class MainActivity : AppCompatActivity() { 
+    lateinit var arrayData: ArrayList<DataModel> 
+    lateinit var rvAdapter: RvAdapter 
+    override fun onCreate(savedInstanceState: Bundle?) { 
+        super.onCreate(savedInstanceState) 
+        setContentView(R.layout.activity_main) 
+         
+        val recylerview = findViewById<RecyclerView>(R.id.rv) 
+        arrayData = ArrayList() 
+        arrayData.add(DataModel("name","symbol","1000")) 
+        arrayData.add(DataModel("name","symbol","1000")) 
+        arrayData.add(DataModel("name","symbol","1000")) 
+        arrayData.add(DataModel("name","symbol","1000")) 
+        arrayData.add(DataModel("name","symbol","1000")) 
+        rvAdapter = RvAdapter(arrayData) 
+        recylerview.layoutManager = LinearLayoutManager(this) 
+        recylerview.adapter = rvAdapter 
+    } 
+} 
+ 
+  
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxPractical No. 4B 
+ 
+Aim: Develop an Android application with a responsive and modular UI using 
+Fragments.   
+ 
+ 
+colors.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<resources> 
+    <color name="black">#FF000000</color> 
+    <color name="white">#FFFFFFFF</color> 
+    <color name="green">#00FF00</color> 
+</resources> 
+ 
+ 
+activity_main.xml 
+ 
+<?xml version="1.0" encoding="utf-8"?> 
+<androidx.constraintlayout.widget.ConstraintLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:app="http://schemas.android.com/apk/res-auto" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent" 
+    android:background="@color/white" 
+    android:gravity="center" 
+    android:orientation="vertical"> 
+ 
+    <FrameLayout 
+        android:id="@+id/fragment_layout" 
+        android:layout_width="match_parent" 
+        android:layout_height="0dp" 
+        android:layout_margin="24dp" 
+        app:layout_constraintBottom_toTopOf="@+id/textView" 
+        app:layout_constraintEnd_toEndOf="parent" 
+        app:layout_constraintStart_toStartOf="parent" 
+        app:layout_constraintTop_toTopOf="parent" /> 
+ 
+    <TextView 
+        android:id="@+id/textView" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginBottom="24dp" 
+        android:text="This is MainActivity" 
+        android:textColor="@color/black" 
+        android:textSize="24sp" 
+        android:textStyle="bold" 
+        app:layout_constraintBottom_toTopOf="@+id/button" 
+        app:layout_constraintEnd_toEndOf="parent" 
+        app:layout_constraintStart_toStartOf="parent" /> 
+ 
+    <Button 
+        android:id="@+id/button" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginBottom="32dp" 
+        android:backgroundTint="@color/green" 
+        android:text="Switch" 
+        app:layout_constraintBottom_toBottomOf="parent" 
+        app:layout_constraintEnd_toEndOf="parent" 
+        app:layout_constraintStart_toStartOf="parent" /> 
+ 
+</androidx.constraintlayout.widget.ConstraintLayout> 
+ 
+ 
+fragment_blank.xml 
+ 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent" 
+    android:id="@+id/fragment_layout" 
+    android:background="@color/green"> 
+ 
+    <TextView 
+        android:layout_width="match_parent" 
+        android:layout_height="match_parent" 
+        android:textColor="@color/black" 
+        android:gravity="center" 
+        android:textSize="30dp" 
+        android:text="hello_blank_fragment" /> 
+ 
+</LinearLayout> 
+ 
+ 
+MainActivity.kt 
+ 
+package com.example.myapplication 
+ 
+import android.os.Bundle 
+import android.widget.Button 
+import androidx.appcompat.app.AppCompatActivity 
+import androidx.fragment.app.Fragment 
+ 
+class MainActivity : AppCompatActivity() { 
+ 
+        override fun onCreate(savedInstanceState: Bundle?) { 
+        super.onCreate(savedInstanceState) 
+        setContentView(R.layout.activity_main) 
+        val button = findViewById<Button>(R.id.button) 
+        button.setOnClickListener { 
+            replace(fragment = BlankFragment()) 
+        } 
+    } 
+    private fun replace(fragment: Fragment) { 
+        // Get fragment manager 
+        val fragmentManager = supportFragmentManager 
+ 
+        // Begin fragment transaction 
+        val fragmentTransaction = fragmentManager.beginTransaction() 
+ 
+        // Replace fragment and commit 
+        fragmentTransaction.replace(R.id.fragment_layout, fragment) 
+        fragmentTransaction.commit() 
+    } 
+} 
+ 
+ 
+BlankFragment.kt 
+ 
+package com.example.myapplication 
+ 
+import android.os.Bundle 
+import androidx.fragment.app.Fragment 
+import android.view.LayoutInflater 
+import android.view.View 
+import android.view.ViewGroup 
+ 
+ 
+class BlankFragment : Fragment() { 
+    override fun onCreateView( 
+        inflater: LayoutInflater, container: ViewGroup?, 
+        savedInstanceState: Bundle? 
+    ): View? { 
+        return inflater.inflate(R.layout.fragment_blank, container, false) 
+    } 
+} 
+Output: 
