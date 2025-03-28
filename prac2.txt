@@ -1,0 +1,623 @@
+Practical No. 2A.1 
+ 
+Aim: Write an Android program to demonstrate the working of different views (TextView, 
+EditText, Button, ImageButton, ToggleButton, RadioGroup, RadioButton, CheckBox). 
+ 
+ 
+activity_main.xml 
+ 
+<?xml version="1.0" encoding="utf-8"?> 
+<ScrollView android:layout_height="match_parent" 
+    android:layout_width="match_parent" 
+    xmlns:android="http://schemas.android.com/apk/res/android" > 
+ 
+    <LinearLayout 
+        android:layout_width="match_parent" 
+        android:layout_height="match_parent" 
+        android:orientation="vertical"> 
+ 
+        <EditText 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:id="@+id/edtName" 
+            android:hint="Enter Name" 
+            android:textSize="20dp"/> 
+ 
+        <RadioGroup 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:id="@+id/rg"> 
+            <RadioButton 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:id="@+id/rbFemale" 
+                android:text="Female" 
+                android:textSize="20dp"/> 
+ 
+            <RadioButton 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:id="@+id/rbMale" 
+                android:text="Male" 
+                android:textSize="20dp"/> 
+ 
+            <RadioButton 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:id="@+id/rbOther" 
+                android:text="Other" 
+                android:textSize="20dp"/> 
+        </RadioGroup> 
+ 
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx2A.1
+
+ Aim: Demonstrate the working of various Views in Android. (TextView, EditText, Button,
+ ImageButton, CheckBox, RadioGroup, RadioButton, ToggleButton)
+        <CheckBox 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:id="@+id/chbDance" 
+            android:text="Dancing" 
+            android:textSize="20dp"/> 
+ 
+        <CheckBox 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:id="@+id/chbSing" 
+            android:text="Singing" 
+            android:textSize="20dp"/> 
+ 
+        <CheckBox 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:id="@+id/chbRead" 
+            android:text="Reading" 
+            android:textSize="20dp"/> 
+ 
+        <Button 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:id="@+id/btnOk" 
+            android:text="OK" 
+            android:textSize="20dp"/> 
+ 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:id="@+id/tvName" 
+            android:textSize="20dp"/> 
+ 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:id="@+id/tvGender" 
+            android:textSize="20dp"/> 
+ 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:id="@+id/tvHobbies" 
+            android:textSize="20dp"/> 
+ 
+        <ImageButton 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:id="@+id/imgBtn" 
+            android:src="@mipmap/ic_launcher_round"/> 
+ 
+        <ToggleButton 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:id="@+id/tg" 
+            android:textSize="20dp"/> 
+ 
+    </LinearLayout> 
+</ScrollView> 
+ 
+ 
+MainActivity.kt 
+ 
+package com.example.lifecycle 
+ 
+import android.annotation.SuppressLint 
+import androidx.appcompat.app.AppCompatActivity 
+import android.os.Bundle 
+import android.util.Log 
+import android.widget.* 
+ 
+class MainActivity : AppCompatActivity() { 
+ 
+    @SuppressLint("MissingInflatedId") 
+    override fun onCreate(savedInstanceState: Bundle?) { 
+        super.onCreate(savedInstanceState) 
+        setContentView(R.layout.activity_main) 
+ 
+        val edtName = findViewById<EditText>(R.id.edtName) 
+        val rg = findViewById<RadioGroup>(R.id.rg) 
+        val rbMale = findViewById<RadioButton>(R.id.rbMale) 
+        val rbFemale = findViewById<RadioButton>(R.id.rbFemale) 
+        val rbOther = findViewById<RadioButton>(R.id.rbOther) 
+        val chbDance = findViewById<CheckBox>(R.id.chbDance) 
+        val chbSing = findViewById<CheckBox>(R.id.chbSing) 
+        val chbRead = findViewById<CheckBox>(R.id.chbRead) 
+        val btnOk = findViewById<Button>(R.id.btnOk) 
+        val tvName = findViewById<TextView>(R.id.tvName) 
+        val tvGender = findViewById<TextView>(R.id.tvGender) 
+        val tvHobbies = findViewById<TextView>(R.id.tvHobbies) 
+        val imgBtn = findViewById<ImageButton>(R.id.imgBtn) 
+        val tg = findViewById<ToggleButton>(R.id.tg) 
+        var s = "" 
+ 
+        btnOk.setOnClickListener { 
+            tvName.text = edtName.text 
+ 
+            if(rbMale.isChecked) 
+                tvGender.text = rbMale.text 
+            else if (rbFemale.isChecked) 
+                tvGender.text = rbFemale.text 
+            else 
+                tvGender.text = rbOther.text 
+ 
+            if(chbDance.isChecked) 
+                s = chbDance.text as String 
+            if(chbSing.isChecked) 
+                s = s + " " + chbSing.text as String 
+            if(chbRead.isChecked) 
+                s = s + " " + chbRead.text as String 
+            tvHobbies.text = s 
+        } 
+ 
+        imgBtn.setOnClickListener { 
+            edtName.setText("") 
+            rbMale.isChecked = false 
+            rbFemale.isChecked = false 
+            rbOther.isChecked = false 
+            chbDance.isChecked = false 
+            chbSing.isChecked = false 
+            chbRead.isChecked = false 
+            tvName.setText("") 
+            tvGender.setText("") 
+            tvHobbies.setText("") 
+        } 
+ 
+        tg.setOnCheckedChangeListener { _, isChecked -> 
+            if(isChecked) 
+            { 
+                Toast.makeText(this, "Toggle Button is ON", Toast.LENGTH_LONG).show() 
+            } 
+            else 
+            { 
+                Toast.makeText(this, "Toggle Button is OFF", Toast.LENGTH_LONG).show() 
+            } 
+        } 
+    } 
+} 
+  
+
+
+
+Practical No. 2A.2 
+ 
+Aim: Write an Android program to demonstrate the working of different views (Spinner, 
+ListView, Menu). 
+ 
+ 
+activity_main.xml 
+ 
+<?xml version="1.0" encoding="utf-8"?> 
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools" 
+    android:layout_height="match_parent" 
+    android:layout_width="match_parent" 
+    xmlns:android="http://schemas.android.com/apk/res/android"> 
+ 
+    <TextView 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/tvSpinner" 
+        android:text="Spinner" 
+        android:textSize="35dp" 
+        android:layout_centerHorizontal="true" 
+        android:layout_marginTop="30dp" /> 
+ 
+    <Spinner 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/spinner1" 
+        android:layout_marginRight="20dp" 
+        android:layout_below="@id/tvSpinner"/> 
+ 
+    <Spinner 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/spinner2" 
+        android:layout_toRightOf="@+id/spinner1" 
+        android:layout_below="@id/tvSpinner"/> 
+ 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/btn_click" 
+        android:text="Click Here" 
+        android:layout_below="@id/spinner1" 
+        android:textSize="20dp"/> 
+ 
+    <TextView 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/tvSpinnerOutput" 
+        android:layout_below="@id/btn_click" 
+        android:textSize="20dp"/> 
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx2A.2
+ Aim: Demonstrate the working of various Views in Android. (Spinner, ListView, Menu)
+ 
+    <TextView 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/tvListView" 
+        android:text="ListView" 
+        android:textSize="35dp" 
+        android:layout_centerHorizontal="true" 
+        android:layout_below="@id/tvSpinnerOutput" 
+        android:layout_marginTop="30dp" /> 
+ 
+    <ListView 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/listView" 
+        android:layout_below="@+id/tvListView"/> 
+ 
+    <TextView 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/tvListViewOutput" 
+        android:layout_below="@id/listView" 
+        android:textSize="20dp"/> 
+ 
+    <TextView 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/tvMenu" 
+        android:text="Menu" 
+        android:textSize="35dp" 
+        android:layout_centerHorizontal="true" 
+        android:layout_below="@id/tvListViewOutput" 
+        android:layout_marginTop="30dp" /> 
+ 
+    <TextView 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/tvMenuOutput" 
+        android:layout_below="@id/tvMenu" 
+        android:textSize="20dp"/> 
+ 
+</RelativeLayout> 
+ 
+ 
+strings.xml 
+ 
+<resources> 
+    <string name="app_name">My Application</string> 
+    <string-array name="country_name"> 
+        <item>India</item> 
+        <item>South Afrcia</item> 
+        <item>Brazil</item> 
+        <item>New Zealand</item> 
+        <item>Australia</item> 
+    </string-array> 
+</resources> 
+ 
+ 
+mymenu.xml 
+ 
+<?xml version="1.0" encoding="utf-8"?> 
+<menu xmlns:android="http://schemas.android.com/apk/res/android"> 
+    <item 
+        android:id="@+id/bm" 
+        android:title="Bookmarks"/> 
+    <item 
+        android:id="@+id/sr" 
+        android:title="Search"/> 
+    <item 
+        android:id="@+id/sa" 
+        android:title="Save"/> 
+    <item 
+        android:id="@+id/sh" 
+        android:title="Share"/> 
+    <item 
+        android:id="@+id/dlt" 
+        android:title="Delete"/> 
+</menu> 
+ 
+ 
+MainActivity.kt 
+ 
+package com.example.lifecycle 
+ 
+import android.annotation.SuppressLint 
+import android.os.Bundle 
+import android.view.Menu 
+import android.view.MenuInflater 
+import android.view.MenuItem 
+import android.widget.* 
+import androidx.appcompat.app.AppCompatActivity 
+import androidx.core.view.get 
+ 
+class MainActivity : AppCompatActivity() { 
+ 
+    @SuppressLint("MissingInflatedId") 
+    override fun onCreate(savedInstanceState: Bundle?) { 
+        super.onCreate(savedInstanceState) 
+        setContentView(R.layout.activity_main) 
+ 
+        val sp1 = findViewById<Spinner>(R.id.spinner1) 
+        val sp2 = findViewById<Spinner>(R.id.spinner2) 
+        val btnClick = findViewById<Button>(R.id.btn_click) 
+        val tvSpinnerOutput = findViewById<TextView>(R.id.tvSpinnerOutput) 
+        val lv = findViewById<ListView>(R.id.listView) 
+        val tvListViewOutput = findViewById<TextView>(R.id.tvListViewOutput) 
+ 
+        val lst = ArrayList<String>() 
+        lst.add("ABC") 
+        lst.add("PQR") 
+        lst.add("XYZ") 
+ 
+        val os = arrayOf<String>("Windows","IOS","Linux","Android") 
+ 
+        val adp1 = ArrayAdapter(this, android.R.layout.simple_spinner_item,lst) 
+        adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) 
+        sp1.adapter = adp1 
+ 
+        val adp2 = ArrayAdapter.createFromResource(this, 
+R.array.country_name,android.R.layout.simple_spinner_item) 
+        adp2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) 
+        sp2.adapter = adp2 
+ 
+        val adp3 = ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1,os) 
+        lv.adapter = adp3 
+ 
+        btnClick.setOnClickListener { 
+            val str1 = sp1.selectedItem.toString() 
+            val str2 = sp2.selectedItem.toString() 
+            tvSpinnerOutput.text = "Data from Spinner1 = $str1 \nData from Spinner2 = 
+$str2" 
+        } 
+ 
+        lv.setOnItemClickListener { adapterView, view, i, l -> 
+            val str3 = adapterView.getItemAtPosition(i) as String 
+            tvListViewOutput.text = "Data from ListView = $str3" 
+        } 
+    } 
+ 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean { 
+        menuInflater.inflate(R.menu.mymenu,menu) 
+        return super.onCreateOptionsMenu(menu) 
+    } 
+ 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean { 
+        val tvMenuOutput = findViewById<TextView>(R.id.tvMenuOutput) 
+        when (item.itemId){ 
+            R.id.bm -> tvMenuOutput.text = "Bookmarks Selected" 
+            R.id.sr -> tvMenuOutput.text = "Search Selected" 
+            R.id.sa -> tvMenuOutput.text = "Save Selected" 
+            R.id.sh -> tvMenuOutput.text = "Share Selected" 
+            R.id.dlt -> tvMenuOutput.text = "Delete Selected" 
+        } 
+        return super.onOptionsItemSelected(item) 
+    } 
+} 
+  
+
+
+Practical No. 2A.3 
+ 
+Aim: Write an Android program to demonstrate the working of different views (DatePicker 
+Dialog, TimePicker Dialog, Alert Dialog). 
+ 
+ 
+activity_main.xml 
+ 
+<?xml version="1.0" encoding="utf-8"?> 
+<RelativeLayout android:layout_height="match_parent" 
+    android:layout_width="match_parent" 
+    xmlns:android="http://schemas.android.com/apk/res/android"> 
+ 
+    <TextView 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/tv1" 
+        android:layout_centerHorizontal="true" 
+        android:layout_marginTop="50dp" 
+        android:text="DatePicker Dialog" 
+        android:textSize="20dp" /> 
+    <Button 
+        android:id="@+id/btnPickDate" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_centerHorizontal="true" 
+        android:layout_below="@id/tv1" 
+        android:layout_marginTop="10dp" 
+        android:text="Pick Date" /> 
+    <TextView 
+        android:id="@+id/tvDate" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_below="@id/btnPickDate" 
+        android:layout_centerHorizontal="true" 
+        android:layout_marginTop="10dp" 
+        android:textSize="20dp"/> 
+    <TextView 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/tv2" 
+        android:layout_centerHorizontal="true" 
+        android:layout_below="@id/tvDate" 
+        android:layout_marginTop="50dp" 
+        android:text="TimePicker Dialog" 
+        android:textSize="20dp" /> 
+    <Button 
+        android:id="@+id/btnPickTime" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_centerHorizontal="true" 
+        android:layout_below="@id/tv2" 
+        android:layout_marginTop="10dp" 
+        android:text="Pick Time" /> 
+
+Aim: Demonstrate the working of various Views in Android (DatePicker Dialog,
+ TimePicker Dialog, Alert Dialog).
+
+ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx2A.3.
+    <TextView 
+        android:id="@+id/tvTime" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_below="@id/btnPickTime" 
+        android:layout_centerHorizontal="true" 
+        android:layout_marginTop="10dp" 
+        android:textSize="20dp"/> 
+    <TextView 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/tv3" 
+        android:layout_centerHorizontal="true" 
+        android:layout_below="@id/tvTime" 
+        android:layout_marginTop="50dp" 
+        android:text="Alert Dialog" 
+        android:textSize="20dp" /> 
+    <Button 
+        android:id="@+id/btnClickMe" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_centerHorizontal="true" 
+        android:layout_below="@id/tv3" 
+        android:layout_marginTop="10dp" 
+        android:text="Show Alert Dialog Window" /> 
+    <TextView 
+        android:id="@+id/tvAlertDialog" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_below="@id/btnClickMe" 
+        android:layout_centerHorizontal="true" 
+        android:layout_marginTop="10dp" 
+        android:textSize="20dp"/> 
+ 
+</RelativeLayout> 
+ 
+ 
+ 
+ 
+ 
+MainActivity.kt 
+ 
+package com.example.myapplication 
+ 
+import android.annotation.SuppressLint 
+import android.app.AlertDialog 
+import android.app.DatePickerDialog 
+import android.app.TimePickerDialog 
+import android.icu.text.DateFormat 
+import androidx.appcompat.app.AppCompatActivity 
+import android.os.Bundle 
+import android.text.format.DateFormat.is24HourFormat 
+import android.widget.* 
+import java.util.Calendar 
+ 
+class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, 
+TimePickerDialog.OnTimeSetListener { 
+ 
+    lateinit var btnPickDate: Button 
+    lateinit var tvDate: TextView 
+    lateinit var btnPickTime: Button 
+    lateinit var tvTime: TextView 
+    lateinit var btnClickMe: Button 
+    lateinit var tvAlertDialog: TextView 
+    var day: Int = 0 
+    var month: Int = 0 
+    var year: Int = 0 
+    var hour: Int = 0 
+    var minute: Int = 0 
+    var myDay: Int = 0 
+    var myMonth: Int = 0 
+    var myYear: Int = 0 
+    var myHour: Int = 0 
+    var myMinute: Int = 0 
+ 
+    @SuppressLint("MissingInflatedId") 
+    override fun onCreate(savedInstanceState: Bundle?) { 
+        super.onCreate(savedInstanceState) 
+        setContentView(R.layout.activity_main) 
+ 
+        btnPickDate = findViewById(R.id.btnPickDate) 
+        tvDate = findViewById(R.id.tvDate) 
+        btnPickTime = findViewById(R.id.btnPickTime) 
+        tvTime = findViewById(R.id.tvTime) 
+        btnClickMe = findViewById(R.id.btnClickMe) 
+        tvAlertDialog = findViewById(R.id.tvAlertDialog) 
+ 
+        btnPickDate.setOnClickListener { 
+            val calender = Calendar.getInstance() 
+            day = calender.get(Calendar.DAY_OF_MONTH) 
+            month = calender.get(Calendar.MONTH) 
+            year = calender.get(Calendar.YEAR) 
+            val datePickerDialog = DatePickerDialog(this@MainActivity, this@MainActivity, 
+year, month, day) 
+            datePickerDialog.show() 
+        } 
+ 
+        btnPickTime.setOnClickListener { 
+            val calender = Calendar.getInstance() 
+            hour = calender.get(Calendar.HOUR) 
+            minute = calender.get(Calendar.MINUTE) 
+            val timePickerDialog = TimePickerDialog(this@MainActivity, this@MainActivity, 
+hour, minute, true) 
+            timePickerDialog.show() 
+        } 
+ 
+        btnClickMe.setOnClickListener { 
+            val builder = AlertDialog.Builder(this) 
+            builder.setTitle("Dialog Box") 
+            builder.setMessage("Deleting File may harm your system") 
+            builder.setIcon(android.R.drawable.ic_dialog_alert) 
+ 
+            builder.setPositiveButton("Yes"){dialogInterface, which -> 
+                tvAlertDialog.text = "Clicked Yes" 
+            } 
+ 
+            builder.setNegativeButton("No"){dialogInterface, which -> 
+                tvAlertDialog.text = "Clicked No" 
+            } 
+ 
+            builder.setNeutralButton("Cancel"){dialogInterface , which -> 
+                tvAlertDialog.text = "Clicked Cancel\nOperation Cancelled" 
+            } 
+ 
+            val alertDialog: AlertDialog = builder.create() 
+            alertDialog.setCancelable(false) 
+            alertDialog.show() 
+        } 
+    } 
+ 
+    override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) { 
+        myYear = p1 
+        myMonth = p2+1 
+        myDay = p3 
+        tvDate.text = "Year: " + myYear + "\n" + "Month: " + myMonth + "\n" + "Day: " 
++ myDay 
+    } 
+ 
+    override fun onTimeSet(p0: TimePicker?, p1: Int, p2: Int) { 
+        myHour = p1 
+        myMinute = p2 
+        tvTime.text = "Hour: " + myHour + "\n" + "Minute: " + myMinute 
+    } 
+} 
+  
+ 
+ 
+             
+ 
+            
+ 
+           
+ 
+   
