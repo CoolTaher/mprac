@@ -1,0 +1,235 @@
+Practical No. 1A 
+ 
+Aim: Implement different Activity Lifecycle methods in an Android application.  
+ 
+ 
+MainActivity.kt 
+ 
+package com.example.test 
+ 
+import android.os.Bundle 
+import android.util.Log 
+import androidx.activity.enableEdgeToEdge 
+import androidx.appcompat.app.AppCompatActivity 
+import androidx.core.view.ViewCompat 
+import androidx.core.view.WindowInsetsCompat 
+ 
+class MainActivity : AppCompatActivity() { 
+    override fun onCreate(savedInstanceState: Bundle?) { 
+        super.onCreate(savedInstanceState) 
+        enableEdgeToEdge() 
+        setContentView(R.layout.activity_main) 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, 
+insets -> 
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars()) 
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 
+systemBars.bottom) 
+            insets 
+        } 
+        Log.d("lifecycle", "onCreate() invoked") 
+    } 
+ 
+    override fun onStart() { 
+        super.onStart() 
+        Log.d("lifecycle", "onStart() invoked") 
+    } 
+ 
+    override fun onPause() { 
+        super.onPause() 
+        Log.d("lifecycle", "onPause() invoked") 
+    } 
+ 
+    override fun onRestart() { 
+        super.onRestart() 
+        Log.d("lifecycle", "onRestart() invoked") 
+    } 
+    override fun onResume() { 
+        super.onResume() 
+        Log.d("lifecycle", "onResume() invoked") 
+    } 
+ 
+    override fun onStop() { 
+        super.onStop() 
+        Log.d("lifecycle", "onStop() invoked") 
+    } 
+ 
+    override fun onDestroy() { 
+        super.onDestroy() 
+        Log.d("lifecycle", "onDestroy() invoked") 
+    } 
+} 
+ 
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxPrac1Bxxxxxxxxxxxxxxx 
+
+Practical No. 1B 
+ 
+Aim: Develop a UI using a combination of different Layout types.  
+ 
+ 
+activity_main.xml (Linear Layout Horizontal) 
+ 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout android:layout_height="match_parent" 
+    android:layout_width="match_parent" 
+    android:gravity="center" 
+    xmlns:android="http://schemas.android.com/apk/res/android" > 
+ 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:text="btn1"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:text="btn2"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:text="btn3"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:text="btn4"/> 
+ 
+</LinearLayout> 
+ 
+ 
+activity_main.xml (Linear Layout Vertical) 
+ 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout android:layout_height="match_parent" 
+    android:layout_width="match_parent" 
+    android:gravity="center" 
+    android:orientation="vertical" 
+    xmlns:android="http://schemas.android.com/apk/res/android" > 
+ 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:text="btn1"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:text="btn2"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:text="btn3"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:text="btn4"/> 
+ 
+</LinearLayout> 
+ 
+ 
+activity_main.xml (Relative Layout) 
+ 
+<?xml version="1.0" encoding="utf-8"?> 
+<RelativeLayout android:layout_width="match_parent" 
+    android:layout_height="match_parent" 
+    xmlns:android="http://schemas.android.com/apk/res/android" > 
+ 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/btn1" 
+        android:text="btn1" 
+        android:textSize="25dp"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/btn2" 
+        android:text="btn2" 
+        android:textSize="25dp" 
+        android:layout_alignParentRight="true"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/btn3" 
+        android:text="btn3" 
+        android:textSize="25dp" 
+        android:layout_alignParentBottom="true"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/btn4" 
+        android:text="btn4" 
+        android:textSize="25dp" 
+        android:layout_alignParentBottom="true" 
+        android:layout_alignParentRight="true"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/btn5" 
+        android:text="btn5" 
+        android:textSize="25dp" 
+        android:layout_centerHorizontal="true"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/btn6" 
+        android:text="btn6" 
+        android:textSize="25dp" 
+        android:layout_centerVertical="true"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/btn7" 
+        android:text="btn7" 
+        android:textSize="25dp" 
+        android:layout_centerInParent="true"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/btn8" 
+        android:text="btn8" 
+        android:textSize="25dp" 
+        android:layout_toLeftOf="@id/btn4" 
+        android:layout_alignParentBottom="true"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/btn9" 
+        android:text="btn9" 
+        android:textSize="25dp" 
+        android:layout_toRightOf="@id/btn7" 
+        android:layout_centerInParent="true"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/btn10" 
+        android:text="btn10" 
+        android:textSize="25dp" 
+        android:layout_below="@id/btn5" 
+        android:layout_centerHorizontal="true"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/btn11" 
+        android:text="btn11" 
+        android:textSize="25dp" 
+        android:layout_above="@id/btn6" 
+        android:layout_toRightOf="@id/btn6"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/btn12" 
+        android:text="btn12" 
+        android:textSize="25dp" 
+        android:layout_above="@id/btn8" 
+        android:layout_toLeftOf="@id/btn8"/> 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/btn13" 
+        android:text="btn13" 
+        android:textSize="25dp" 
+        android:layout_below="@id/btn9" 
+        android:layout_toLeftOf="@id/btn9"/> 
+ 
+</RelativeLayout> 
+Output: 
+
+  
+ 
